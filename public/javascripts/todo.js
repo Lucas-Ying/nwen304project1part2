@@ -7,7 +7,7 @@ $(document).ready(function (e) {
     var api = '/api';
 
     $.ajax({
-        url: "/test_database",
+        url: api + "/test_database",
         type: "GET"
     }).then(redraw, ERROR_LOG);
 

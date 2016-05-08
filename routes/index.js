@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/test_database', function(request, response) {
+router.get(api + '/test_database', function(request, response) {
 // SQL Query > Select Data
   var query = client.query("SELECT * FROM todo");
   var results = [];
