@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .container
+        #to-do
+            h1 My To-do List
+            // add button here
+            button#add-todo Add to-do item
+            h2 To Be Done
+            ul#todo-list.sortlist
+        #completed
+            h2 Completed Tasks
+            ul#completed-list.sortlist
+        // add dialog box here
+        #new-todo(title='Add to-do item')
+            form
+                p
+                    label(for='task') Task Name:
+                    input#task(type='text', name='task')
+        #isDelete(title='Comfirmation')
+            label Do you comfirm to delete this task?
