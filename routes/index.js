@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var pg = require('pg').native;
-var connectionString = 'postgres://lucas:abc123@localhost:5432/lucas';
+var connectionString = process.env.DATABASE_URL;
 var client = new pg.Client(connectionString);
 client.connect();
 
