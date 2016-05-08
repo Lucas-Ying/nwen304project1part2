@@ -6,6 +6,8 @@ var connectionString = process.env.DATABASE_URL;
 var client = new pg.Client(connectionString);
 client.connect();
 
+var api = '/api';
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -26,7 +28,7 @@ router.get('/test_database', function(request, response) {
 });
 
 // Put an item in the database.
-router.post('/add', function(req,res){
+router.post(api  + '/add', function(req,res){
   req.on('error', function (err) {
     res.status(404, {message: "invalid request"});
   });
@@ -39,7 +41,7 @@ router.post('/add', function(req,res){
 });
 
 // Delete an item in the database
-router.delete('/delete', function(req,res){
+router.delete(api + '/delete', function(req,res){
   req.on('error', function (err) {
     res.status(404, {message: "invalid request"});
   });
@@ -50,7 +52,7 @@ router.delete('/delete', function(req,res){
   });
 });
 
-router.put('/switchToComplete', function(req,res){
+router.put(api + '/switchToComplete', function(req,res){
   req.on('error', function (err) {
     res.status(404, {message: "invalid request"});
   });
@@ -62,7 +64,7 @@ router.put('/switchToComplete', function(req,res){
   });
 });
 
-router.put('/switchToIncomplete', function(req,res){
+router.put(api + '/switchToIncomplete', function(req,res){
   req.on('error', function (err) {
     res.status(404, {message: "invalid request"});
   });

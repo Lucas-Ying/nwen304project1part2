@@ -4,6 +4,7 @@
 
 $(document).ready(function (e) {
     var ERROR_LOG = console.error.bind(console);
+    var api = '/api';
 
     $.ajax({
         url: "/test_database",
@@ -33,7 +34,7 @@ $(document).ready(function (e) {
             "Add task": function () {
                 var taskName = $('#task').val();
                 $.ajax({
-                    url: "/add",
+                    url: api + "/add",
                     type: "POST",
                     dataType: "json",
                     data: {sendData: taskName, listName: "todo"},
@@ -69,7 +70,7 @@ $(document).ready(function (e) {
         var $taskItem = $(this).parent('li');
         var taskName = $taskItem.text().substring(2, $taskItem.text().length);
         $.ajax({
-            url: "/switchToComplete",
+            url: api + "/switchToComplete",
             type: "PUT",
             data: {taskName: taskName}
         }).then(successful, ERROR_LOG);
@@ -86,7 +87,7 @@ $(document).ready(function (e) {
         var $taskItem = $(this).parent('li');
         var taskName = $taskItem.text().substring(2, $taskItem.text().length);
         $.ajax({
-            url: "switchToIncomplete",
+            url: api + "/switchToIncomplete",
             type: "PUT",
             data: {taskName: taskName}
         }).then(successful, ERROR_LOG);
@@ -102,7 +103,7 @@ $(document).ready(function (e) {
     $('#todo-list').on('sortreceive', function (e, ui) {
         var taskName = ui.item.text().substring(2, ui.item.text().length);
         $.ajax({
-            url: "/switchToIncomplete",
+            url: api + "/switchToIncomplete",
             type: "PUT",
             data: {taskName: taskName}
         }).then(successful, ERROR_LOG);
@@ -112,7 +113,7 @@ $(document).ready(function (e) {
     $('#completed-list').on('sortreceive', function (e, ui) {
         var taskName = ui.item.text().substring(2, ui.item.text().length);
         $.ajax({
-            url: "/switchToComplete",
+            url: api + "/switchToComplete",
             type: "PUT",
             data: {taskName: taskName}
         }).then(successful, ERROR_LOG);
@@ -144,7 +145,7 @@ $(document).ready(function (e) {
                 taskName = taskName.substring(2, taskName.length);
 
                 $.ajax({
-                    url: "/delete/",
+                    url: api + "/delete/",
                     type: "DELETE",
                     dataType: "json",
                     data: {task: taskName},
